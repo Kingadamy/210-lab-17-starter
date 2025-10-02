@@ -10,6 +10,13 @@ struct Node {
 
 void output(Node *);
 
+void addToHead(Node*& head, float value) {
+    Node* newNode = new Node;
+    newNode->value = value;
+    newNode->next = head;
+    head = newNode;
+}
+
 int main() {
     Node *head = nullptr;
     int count = 0;
