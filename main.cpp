@@ -8,14 +8,13 @@ struct Node {
     Node *next;
 };
 
+void addToHead(Node*& head, float value);
+void addToTail(Node*& head, float value);
+void deleteNode(Node*& head, int position);
+void insertNode(Node*& head, int position, float value);
+void deleteList(Node*& head);
 void output(Node *);
 
-void addToHead(Node*& head, float value) {
-    Node* newNode = new Node;
-    newNode->value = value;
-    newNode->next = head;
-    head = newNode;
-}
 
 int main() {
     Node *head = nullptr;
@@ -105,6 +104,19 @@ int main() {
 
     return 0;
 }
+
+void addToHead(Node*& head, float value) {
+    Node* newNode = new Node;
+    newNode->value = value;
+    newNode->next = head;
+    head = newNode;
+}
+
+
+
+
+
+
 
 void output(Node * hd) {
     if (!hd) {
