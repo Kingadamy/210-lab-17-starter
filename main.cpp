@@ -112,24 +112,24 @@ void addToHead(Node*& head, float value) {  // adds new node to the head
     head = newNode;
 }
 
-void addToTail(Node*& head, float value) {
+void addToTail(Node*& head, float value) { // add node to tail
     Node* newNode = new Node;
     newNode->value = value;
     newNode->next = nullptr;
-    
-    if (!head) {
+     
+    if (!head) {           // check for empty list
         head = newNode;
         return;
     }
     
-    Node* current = head;
+    Node* current = head;  // go to end of list
     while (current->next) {
         current = current->next;
     }
     current->next = newNode;
 }
 
-void deleteNode(Node*& head, int position) {
+void deleteNode(Node*& head, int position) {  // delete node at current position
     if (!head || position < 1) {
         cout << "Empty list.\n";
         return;
@@ -148,9 +148,16 @@ void deleteNode(Node*& head, int position) {
     for (int i = 1; i < position - 1 && current->next; i++) {
         current = current->next;
     }
-        Node* nodeToDelete = current->next;
+
+    if (!current->next) {   // position is out of range
+        cout << "Position out of range.\n";
+        return;
+    }
+        Node* nodeToDelete = current->next; // node to delete
     current->next = nodeToDelete->next;
     delete nodeToDelete;
+
+
 }
     
 
