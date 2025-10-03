@@ -133,12 +133,8 @@ void deleteNode(Node*& head, int position) {  // delete node at current position
     if (!head || position < 1) {
         cout << "Empty list.\n";
         return;
-     Node* nodeToDelete = current->next; // node to delete
-    current->next = nodeToDelete->next;
-    delete nodeToDelete;
     }
-    
-    
+}
     // Delete the head here
     if (position == 1) {
         Node* temp = head;
@@ -157,6 +153,9 @@ void deleteNode(Node*& head, int position) {  // delete node at current position
         cout << "Position out of range.\n";
         return;
     }
+    Node* nodeToDelete = current->next; // node to delete
+    current->next = nodeToDelete->next;
+    delete nodeToDelete;
 
 void insertNode(Node*& head, int position, float value) {
     if (position < 1) {
@@ -164,32 +163,24 @@ void insertNode(Node*& head, int position, float value) {
         return;
     }
 
-    // this is for inserting at the head
-    if (position == 0 || !head) {
+    if (position == 1) { // insert at head
         addToHead(head, value);
         return;
     }
-    
-    // here we go to the node before we want to insert
-    Node* current = head;
-    for (int i = 1; i < position && current; i++) {
-        current = current->next;
-    }   
 
-    if (!current) { // check for out of range
-        cout << "Position out of range.\n";
+    if (!current) { // if list is empty and position > 1
+        cout << "Not in range.\n";
         return;
     }
 
-}
-    // insert the new node
+    // Insert the new node after current
     Node* newNode = new Node;
     newNode->value = value;
     newNode->next = current->next;
     current->next = newNode;
 }
-
-// Delete the linked list
+    
+// Delete the entire linked list
 void deleteList(Node*& head) {
     Node* current = head;
     while (current) {
@@ -199,13 +190,6 @@ void deleteList(Node*& head) {
     }
     head = nullptr;
 }
-
-
-
-
-
-
-
 
 
 
