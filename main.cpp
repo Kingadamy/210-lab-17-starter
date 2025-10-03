@@ -105,12 +105,34 @@ int main() {
     return 0;
 }
 
-void addToHead(Node*& head, float value) {
+void addToHead(Node*& head, float value) {  // adds new node to the head
     Node* newNode = new Node;
     newNode->value = value;
     newNode->next = head;
     head = newNode;
 }
+
+void addToTail(Node*& head, float value) {
+    Node* newNode = new Node;
+    newNode->value = value;
+    newNode->next = nullptr;
+    
+    if (!head) {
+        head = newNode;
+        return;
+    }
+    
+    Node* current = head;
+    while (current->next) {
+        current = current->next;
+    }
+    current->next = newNode;
+}
+
+
+
+
+
 
 
 
@@ -131,3 +153,4 @@ void output(Node * hd) {
     }
     cout << endl;
 }
+
