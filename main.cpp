@@ -153,10 +153,32 @@ void deleteNode(Node*& head, int position) {  // delete node at current position
         cout << "Position out of range.\n";
         return;
     }
-        Node* nodeToDelete = current->next; // node to delete
+    Node* nodeToDelete = current->next; // node to delete
     current->next = nodeToDelete->next;
     delete nodeToDelete;
 
+void insertNode(Node*& head, int position, float value) {
+    if (position < 1) {
+        cout << "Invalid position.\n";
+        return;
+    }
+    
+    // this is for inserting at the head
+    if (position == 0 || !head) {
+        addToHead(head, value);
+        return;
+    }
+    
+    // here we go to the node before we want to insert
+    Node* current = head;
+    for (int i = 1; i < position && current; i++) {
+        current = current->next;
+    }   
+
+    if (!current) { // check for out of range
+        cout << "Position out of range.\n";
+        return;
+    }
 
 }
     
