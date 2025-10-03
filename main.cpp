@@ -129,7 +129,30 @@ void addToTail(Node*& head, float value) {
     current->next = newNode;
 }
 
-
+void deleteNode(Node*& head, int position) {
+    if (!head || position < 1) {
+        cout << "Empty list.\n";
+        return;
+    }
+    
+    // Delete the head here
+    if (position == 1) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        return;
+    }
+    
+    // Go to node before the one to delete
+    Node* current = head;
+    for (int i = 1; i < position - 1 && current->next; i++) {
+        current = current->next;
+    }
+        Node* nodeToDelete = current->next;
+    current->next = nodeToDelete->next;
+    delete nodeToDelete;
+}
+    
 
 
 
