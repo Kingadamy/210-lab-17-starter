@@ -134,7 +134,7 @@ void deleteNode(Node*& head, int position) {  // delete node at current position
         cout << "Empty list.\n";
         return;
     }
-}
+    
     // Delete the head here
     if (position == 1) {
         Node* temp = head;
@@ -155,7 +155,8 @@ void deleteNode(Node*& head, int position) {  // delete node at current position
     }
     Node* nodeToDelete = current->next; // node to delete
     current->next = nodeToDelete->next;
-    delete nodeToDelete;
+    delete nodeToDelete; 
+    }
 
 void insertNode(Node*& head, int position, float value) {
     if (position < 1) {
@@ -167,6 +168,13 @@ void insertNode(Node*& head, int position, float value) {
         addToHead(head, value);
         return;
     }
+
+    // here we go to the node before the insertion point
+    Node* current = head;
+    for (int i = 1; i < position && current; i++) {
+        current = current->next;
+    }
+
 
     if (!current) { // if list is empty and position > 1
         cout << "Not in range.\n";
@@ -190,6 +198,7 @@ void deleteList(Node*& head) {
     }
     head = nullptr;
 }
+
 
 
 
